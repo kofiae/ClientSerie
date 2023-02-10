@@ -76,18 +76,18 @@ namespace ClientConvertisseurV2.Services
             }
         }
 
-        public async Task<Boolean> PostSerieAsync(string nomControleur)
+        public async Task<Boolean> PostSerieAsync(string nomControleur, Serie s)
         {
 
-            /*try
+            try
             {
-                return await Client.GetFromJsonAsync<List<Serie>>(nomControleur);
+                await Client.PostAsJsonAsync<Serie>(nomControleur, s);
+                return true;
             }
             catch (Exception)
             {
-                return null;
-            }*/
-            return false;
+                return false;
+            }
         }
 
         public async Task<Boolean> PutSerieAsync(string nomControleur, Serie s)

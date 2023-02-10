@@ -13,7 +13,7 @@ namespace ClientConvertisseurV2.Services
         Task<List<Serie>> GetAllSerieAsync(string nomControleur);
         Task<Serie> GetSerieAsync(string nomControleur, int id);
         Task<Boolean> PutSerieAsync(string nomControleur, Serie s);
-        Task<Boolean> PostSerieAsync(string nomControleur);
+        Task<Boolean> PostSerieAsync(string nomControleur, Serie s);
         Task<Boolean> DeleteSerieAsync(string nomControleur, int id);
         
     }

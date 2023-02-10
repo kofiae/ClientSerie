@@ -1,0 +1,106 @@
+<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+<!-- Licensed under the MIT License. -->
+
+<Page
+    x:Class="ClientSerie.Views.AjoutSeriePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClientSerie.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel>
+
+        <TextBlock
+            Name="titre"
+            Text="Titre"
+            Margin="15"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBlock>
+        <TextBox
+            Name="boxtitre"
+            RelativePanel.Below="titre"
+            Text="{Binding SerieToAdd.Titre, Mode=TwoWay}"            
+            Width="500"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBox>
+
+
+        <TextBlock
+            Name="resume"
+            Text="Resume"
+            RelativePanel.Below="boxtitre"
+            Margin="15"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBlock>
+        <TextBox
+            Name="boxresume"
+            RelativePanel.Below="resume"
+            Text="{Binding SerieToAdd.Resume, Mode=TwoWay}"   
+            Width="500"
+            Height="200"
+            
+            RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBox>
+
+        <TextBlock
+            Name="saison"
+            Text="Nombre de saisons"
+            RelativePanel.Below="boxresume"
+            Margin="15"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBlock>
+        <NumberBox
+            Name="boxsaison"
+            RelativePanel.Below="saison"
+            Text="{Binding SerieToAdd.Nbsaisons, Mode=TwoWay}"   
+            Width="150"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"></NumberBox>
+
+        <TextBlock
+            Name="episode"
+            Text="Nombre d'episode"
+            RelativePanel.Below="boxsaison"
+            Margin="15"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBlock>
+        <NumberBox
+            Name="boxepisode"
+            RelativePanel.Below="episode"
+            Text="{Binding SerieToAdd.Nbepisodes, Mode=TwoWay}"  
+            Width="150"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"></NumberBox>
+
+        <TextBlock
+            Name="annee"
+            Text="Annee de creation"
+            RelativePanel.Below="boxepisode"
+            Margin="15"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBlock>
+        <NumberBox
+            Name="boxannee"
+            RelativePanel.Below="annee"
+            Text="{Binding SerieToAdd.Anneecreation, Mode=TwoWay}"  
+            Width="150"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"></NumberBox>
+
+        <TextBlock
+            Name="chaine"
+            Text="Chaine"
+            RelativePanel.Below="boxannee"
+            Margin="15"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBlock>
+        <TextBox
+            Name="boxchaine"
+            RelativePanel.Below="chaine"
+            Text="{Binding SerieToAdd.Network, Mode=TwoWay}" 
+            Width="200"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBox>
+
+        <Button
+            Name="ajouter"
+            Content="Ajouter"
+            RelativePanel.Below="boxchaine"
+            Margin="20"
+            Width="200"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            Command="{Binding BtnAddSerie}"></Button>
+
+    </RelativePanel>
+</Page>

@@ -53,7 +53,7 @@ namespace ClientSerie
             // Ensure the current window is active
             m_window.Activate();
             // Navigate to the first page
-            rootFrame.Navigate(typeof(AfficherSeriePage));
+            rootFrame.Navigate(typeof(AjoutSeriePage));
             //initialize property MainRoot
             MainRoot = m_window.Content as FrameworkElement;
 
