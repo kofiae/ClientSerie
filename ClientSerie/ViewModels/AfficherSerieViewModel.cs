@@ -2,6 +2,7 @@
 using ClientSerie.Models.EntityFramework;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,8 +22,8 @@ namespace ClientSerie.ViewModels
         private int idToFind;
 
         public IRelayCommand BtnViewSerie { get; }
-
-
+        public IRelayCommand BtnUpdateSerie { get; }
+        public IRelayCommand BtnDeleteSerie { get; }
         public ObservableCollection<Serie> Series
         {
             get
@@ -77,6 +78,19 @@ namespace ClientSerie.ViewModels
         {
             //Boutons
             BtnViewSerie = new RelayCommand(ActionViewSerie);
+            BtnUpdateSerie = new RelayCommand(ActionUpdateSerie);
+            BtnDeleteSerie = new RelayCommand(ActionDeleteSerie);
+        }
+        private async void DisplayDialog(string title, string content)
+        {
+            ContentDialog dialog = new ContentDialog
+            {
+                Title = title,
+                Content = content,
+                CloseButtonText = "Ok"
+            };
+            dialog.XamlRoot = App.MainRoot.XamlRoot;
+            ContentDialogResult result = await dialog.ShowAsync();
         }
 
         public async void GetSerieAsync()
@@ -89,6 +103,24 @@ namespace ClientSerie.ViewModels
             else
                 SerieSelected = result;
         }
+        public async void DeleteSerieAsync()
+        {
+            WSService service = new WSService("https://apiseriesodu.azurewebsites.net/api/");
+            bool result = await service.DeleteSerieAsync("series", SerieSelected.Serieid);
+            if (result == false)
+                throw new Exception();
+            //DisplayDialog("Erreur", "API non disponible !");
+
+        }
+        public async void UpdateSerieAsync()
+        {
+            WSService service = new WSService("https://apiseriesodu.azurewebsites.net/api/");
+            bool result = await service.PutSerieAsync("series/"+SerieSelected.Serieid, SerieSelected);
+            if (result == false)
+                DisplayDialog("Erreur", "Les données de la série n'ont pas été modifié!");
+            else
+                DisplayDialog("Modification effectué", "Les données de la série ont été modifié!");
+        }
 
 
         public void ActionViewSerie()
@@ -100,6 +132,24 @@ namespace ClientSerie.ViewModels
             }
             else
                 GetSerieAsync();
+        }
+        public void ActionUpdateSerie()
+        {
+            if (IdToFind == null)
+            {
+                throw new Exception();
+            }
+            else
+                UpdateSerieAsync();
+        }
+        public void ActionDeleteSerie()
+        {
+            if (IdToFind == null)
+            {
+                throw new Exception();
+            }
+            else
+                DeleteSerieAsync();
         }
     }
 }

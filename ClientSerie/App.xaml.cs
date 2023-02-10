@@ -54,9 +54,12 @@ namespace ClientSerie
             m_window.Activate();
             // Navigate to the first page
             rootFrame.Navigate(typeof(AfficherSeriePage));
+            //initialize property MainRoot
+            MainRoot = m_window.Content as FrameworkElement;
 
         }
 
         private Window m_window;
+        public static FrameworkElement MainRoot { get; private set; }
     }
 }

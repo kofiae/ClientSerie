@@ -39,15 +39,16 @@ namespace ClientConvertisseurV2.Services
             }
         }
 
-        public async Task<List<Serie>> DeleteSerieAsync(string nomControleur)
+        public async Task<Boolean> DeleteSerieAsync(string nomControleur, int id)
         {
             try
             {
-                return await Client.GetFromJsonAsync<List<Serie>>(nomControleur);
+                await Client.GetFromJsonAsync<Serie>(nomControleur);
+                return true; 
             }
             catch (Exception)
             {
-                return null;
+                return false;
             }
         }
 
@@ -75,27 +76,30 @@ namespace ClientConvertisseurV2.Services
             }
         }
 
-        public async Task<List<Serie>> PostSerieAsync(string nomControleur)
+        public async Task<Boolean> PostSerieAsync(string nomControleur)
         {
-            try
+
+            /*try
             {
                 return await Client.GetFromJsonAsync<List<Serie>>(nomControleur);
             }
             catch (Exception)
             {
                 return null;
-            }
+            }*/
+            return false;
         }
 
-        public async Task<List<Serie>> PutSerieAsync(string nomControleur)
+        public async Task<Boolean> PutSerieAsync(string nomControleur, Serie s)
         {
             try
             {
-                return await Client.GetFromJsonAsync<List<Serie>>(nomControleur);
+                await Client.PutAsJsonAsync(nomControleur, s);
+                return true;
             }
             catch (Exception)
             {
-                return null;
+                return false;
             }
         }
     }

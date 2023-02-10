@@ -123,6 +123,7 @@
             RelativePanel.AlignHorizontalCenterWithPanel="True"
             RelativePanel.AlignLeftWithPanel="True"
             Margin="550,50,0,0"
+            Command="{Binding BtnUpdateSerie}"
             ></Button>
         <Button
             Name="supprimer"
@@ -131,7 +132,8 @@
             RelativePanel.Below="boxchaine"
             RelativePanel.AlignHorizontalCenterWithPanel="True"
             RelativePanel.AlignRightWithPanel="True"
-            Margin="0,50,550,0"></Button>
+            Margin="0,50,550,0"
+            Command="{Binding BtnDeleteSerie}"></Button>
         
     </RelativePanel>
 </Page>
