@@ -39,29 +39,64 @@ namespace ClientConvertisseurV2.Services
             }
         }
 
-        public Task<List<Serie>> DeleteSerieAsync(string nomControleur)
+        public async Task<List<Serie>> DeleteSerieAsync(string nomControleur)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await Client.GetFromJsonAsync<List<Serie>>(nomControleur);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
-        public Task<List<Serie>> GetAllSerieAsync(string nomControleur)
+        public async Task<List<Serie>> GetAllSerieAsync(string nomControleur)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await Client.GetFromJsonAsync<List<Serie>>(nomControleur);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
-        public Task<List<Serie>> GetSerieAsync(string nomControleur)
+        public async Task<Serie> GetSerieAsync(string nomControleur, int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await Client.GetFromJsonAsync<Serie>(string.Concat(nomControleur + "/" + id));
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
-        public Task<List<Serie>> PostSerieAsync(string nomControleur)
+        public async Task<List<Serie>> PostSerieAsync(string nomControleur)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await Client.GetFromJsonAsync<List<Serie>>(nomControleur);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
-        public Task<List<Serie>> PutSerieAsync(string nomControleur)
+        public async Task<List<Serie>> PutSerieAsync(string nomControleur)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await Client.GetFromJsonAsync<List<Serie>>(nomControleur);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }
