@@ -43,7 +43,7 @@ namespace ClientConvertisseurV2.Services
         {
             try
             {
-                await Client.GetFromJsonAsync<Serie>(nomControleur);
+                await Client.DeleteAsync(string.Concat(nomControleur + "/" + id));
                 return true; 
             }
             catch (Exception)

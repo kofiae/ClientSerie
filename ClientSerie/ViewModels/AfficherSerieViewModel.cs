@@ -98,8 +98,7 @@ namespace ClientSerie.ViewModels
             WSService service = new WSService("https://apiseriesodu.azurewebsites.net/api/");
             Serie result = await service.GetSerieAsync("series", IdToFind);
             if (result == null)
-                throw new Exception();
-            //DisplayDialog("Erreur", "API non disponible !");
+                DisplayDialog("Erreur", "La série n'existe pas !");
             else
                 SerieSelected = result;
         }
@@ -108,8 +107,9 @@ namespace ClientSerie.ViewModels
             WSService service = new WSService("https://apiseriesodu.azurewebsites.net/api/");
             bool result = await service.DeleteSerieAsync("series", SerieSelected.Serieid);
             if (result == false)
-                throw new Exception();
-            //DisplayDialog("Erreur", "API non disponible !");
+                DisplayDialog("Erreur", "La série n'a pas été supprimé !");
+            else
+                DisplayDialog("Suppression effectué", "La série a été supprimé !");
 
         }
         public async void UpdateSerieAsync()
@@ -117,9 +117,9 @@ namespace ClientSerie.ViewModels
             WSService service = new WSService("https://apiseriesodu.azurewebsites.net/api/");
             bool result = await service.PutSerieAsync("series/"+SerieSelected.Serieid, SerieSelected);
             if (result == false)
-                DisplayDialog("Erreur", "Les données de la série n'ont pas été modifié!");
+                DisplayDialog("Erreur", "Les données de la série n'ont pas été modifié !");
             else
-                DisplayDialog("Modification effectué", "Les données de la série ont été modifié!");
+                DisplayDialog("Modification effectué", "Les données de la série ont été modifié !");
         }
 
 
