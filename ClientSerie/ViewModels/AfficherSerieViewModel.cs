@@ -125,28 +125,27 @@ namespace ClientSerie.ViewModels
 
         public void ActionViewSerie()
         {
-            if (IdToFind == null)
+            if (IdToFind == 0)
             {
-                throw new Exception();
-                //DisplayDialog("Erreur", "Vous devez selectionner une devise !");
+                DisplayDialog("Erreur", "Entrer l'id de la serie que vous souhaitez visualiser");
             }
             else
                 GetSerieAsync();
         }
         public void ActionUpdateSerie()
         {
-            if (IdToFind == null)
+            if (IdToFind == 0)
             {
-                throw new Exception();
+                DisplayDialog("Erreur", "Entrer l'id de la serie que vous souhaitez modifier");
             }
             else
                 UpdateSerieAsync();
         }
         public void ActionDeleteSerie()
         {
-            if (IdToFind == null)
+            if (IdToFind == 0)
             {
-                throw new Exception();
+                DisplayDialog("Erreur", "Entrer l'id de la serie que vous souhaitez supprimer");
             }
             else
                 DeleteSerieAsync();
